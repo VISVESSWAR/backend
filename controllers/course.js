@@ -43,6 +43,7 @@ export const fetchLecture = tryCatch(async (req, res) => {
       .status(400)
       .json({ message: "You have not enrolled in this course" });
   }
+  res.json({ lecture });
 });
 
 export const getMyCourses = tryCatch(async (req, res) => {
