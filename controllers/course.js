@@ -16,9 +16,6 @@ export const getSingleCourse = tryCatch(async (req, res) => {
 export const fetchAllLectures = tryCatch(async (req, res) => {
   const lectures = await Lecture.find({ course: req.params.id });
   const user = await User.findById(req.user._id);
-  // if (user.role !== "admin") {
-  //   return res.status(400).json({ message: "You are not an admin." });
-  // }
   if (user.role === "admin") {
     return res
       .status(200)
@@ -27,6 +24,7 @@ export const fetchAllLectures = tryCatch(async (req, res) => {
   if (!user.courses.includes(req.params.id)) {
     return res.status(400).json({ message: "You have not bought this course" });
   }
+  res.json({ lectures });
 });
 
 export const fetchLecture = tryCatch(async (req, res) => {
