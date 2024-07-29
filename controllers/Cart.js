@@ -87,8 +87,8 @@ export const checkOut = async (req, res) => {
         quantity: 1,
       })),
       mode: "payment",
-      success_url: `${process.env.FRONTEND_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.FRONTEND_URL}/failure`,
+      success_url: `https://lukskill.vercel.app/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `https://lukskill.vercel.app/failure`,
       metadata: {
         userId: user._id.toString(),
       },
