@@ -38,7 +38,7 @@ export const fetchLecture = tryCatch(async (req, res) => {
       .status(200)
       .json({ message: "Fetched lecture of the course ", lecture });
   }
-  if (!user.courses.includes(req.params.id)) {
+  if (!user.courses.includes(lecture.course)) {
     return res
       .status(400)
       .json({ message: "You have not enrolled in this course" });
