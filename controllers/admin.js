@@ -96,15 +96,15 @@ export const getAllUsers = tryCatch(async (req, res) => {
 });
 
 export const updateRole = tryCatch(async (req, res) => {
-  const user = await User.find(req.params.id);
+  const user = await User.findById(req.params.id);
   if (user.role === "user") {
     user.role = "admin";
     await user.save();
-    res.status(200).json({ message: "Role updated to admin" });
+    return res.status(200).json({ message: "Role updated to admin" });
   }
   if (user.role === "admin") {
     user.role = "user";
     await user.save();
-    res.status(200).json({ message: "Role updated to user" });
+    return res.status(200).json({ message: "Role updated to user" });
   }
 });

@@ -7,7 +7,7 @@ export const isAuth = async (req, res, next) => {
     console.log(token);
 
     if (!token) {
-      return res.status(400).json({ message: "Please login" });
+      return res.status(400).json({ message: "Please login!" });
     }
     const decodedData = jwt.verify(token, process.env.JWT_code);
     req.user = await User.findById(decodedData._id);

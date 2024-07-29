@@ -1,16 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import { connectDB } from "./database/db.js";
-//import Stripe from "stripe";
 import cors from "cors";
-
-//const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-// const session = await stripe.checkout.sessions.create({
-//   line_items: {},
-//   mode: "payment",
-//   success_url: "http://localhost:3001/api/payment/success",
-//   cancel_url: "http://localhost:3001/api/payment/failure",
-// });
 
 dotenv.config();
 

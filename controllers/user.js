@@ -24,7 +24,7 @@ export const register = tryCatch(async (req, res) => {
     );
 
     const data = { name, otp };
-    await sendMail(email, "WeLearn", data);
+    await sendMail(email, "lookSkill", data);
 
     res
       .status(200)
@@ -55,11 +55,11 @@ export const loginUser = tryCatch(async (req, res) => {
 
   const exists = await User.findOne({ email });
   if (!exists) {
-   return res.status(400).json({ message: "no user with this email" });
+    return res.status(400).json({ message: "no user with this email" });
   }
   const pass = await bcrypt.compare(password, exists.password);
   if (!pass) {
-   return  res.status(400).json({ message: "Incorrect Password" });
+    return res.status(400).json({ message: "Incorrect Password" });
   }
   const token = jwt.sign({ _id: exists._id }, process.env.JWT_code, {
     expiresIn: "15d",
@@ -71,6 +71,5 @@ export const loginUser = tryCatch(async (req, res) => {
 
 export const MyProfile = tryCatch(async (req, res) => {
   const userData = await User.findById(req.user._id);
-  res.json({ userData }); 
+  res.json({ userData });
 });
-
